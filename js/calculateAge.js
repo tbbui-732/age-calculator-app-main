@@ -6,7 +6,7 @@ var currDay = currDate.getDate();
 var currMonth = currDate.getMonth() + 1;
 var currYear = currDate.getFullYear();
 // Reformat input to 'MM/DD/YYYY'
-function reformatDate(day, month, year) {
+function _reformatDate(day, month, year) {
     var newDay;
     var newMonth;
     var newYear;
@@ -22,10 +22,10 @@ function reformatDate(day, month, year) {
     return newMonth + '/' + newDay + '/' + newYear;
 }
 // Get number of days between birthday and current day
-function getDateDifferenceInDays(userDay, userMonth, userYear) {
+function _getDateDifferenceInDays(userDay, userMonth, userYear) {
     // Reformat number to string
-    var bday = reformatDate(userDay, userMonth, userYear);
-    var today = reformatDate(currDay, currMonth, currYear);
+    var bday = _reformatDate(userDay, userMonth, userYear);
+    var today = _reformatDate(currDay, currMonth, currYear);
     // Format string to Date
     var startDate = new Date(bday);
     var endDate = new Date(today);
@@ -38,7 +38,7 @@ function _isLeapYear(year) {
     return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
 }
 // Converts total number of days to [num_year, num_months, num_days]
-function convertDays(days) {
+function _convertDays(days) {
     var daysPerMonth = [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
     var years = days; // 365.25;
     days %= 365.25;
@@ -59,17 +59,17 @@ function convertDays(days) {
     }
     return null;
 }
-function main() {
+// PUBLIC METHOD
+// Returns the date as [YYYY, MM, DD] Array<number>
+function calculateAge() {
     var userDay = parseInt(document.getElementById("day").value);
     var userMonth = parseInt(document.getElementById("month").value);
     var userYear = parseInt(document.getElementById("year").value);
-    var numDays = getDateDifferenceInDays(userDay, userMonth, userYear);
-    var dateArray = convertDays(numDays);
+    var numDays = _getDateDifferenceInDays(userDay, userMonth, userYear);
+    var dateArray = _convertDays(numDays);
     if (dateArray == null) {
         console.log("Unable to convert total number of days into a date");
         return;
     }
     return dateArray;
 }
-// --- MAIN ---
-main();

@@ -7,7 +7,7 @@ let currMonth:  number = currDate.getMonth() + 1;
 let currYear:   number = currDate.getFullYear();
 
 // Reformat input to 'MM/DD/YYYY'
-function reformatDate(day: number, month: number, year: number): string {
+function _reformatDate(day: number, month: number, year: number): string {
   let newDay: string;
   let newMonth: string;
   let newYear: string;
@@ -27,10 +27,10 @@ function reformatDate(day: number, month: number, year: number): string {
 }
 
 // Get number of days between birthday and current day
-function getDateDifferenceInDays(userDay: number, userMonth: number, userYear: number): number {
+function _getDateDifferenceInDays(userDay: number, userMonth: number, userYear: number): number {
   // Reformat number to string
-  let bday: string = reformatDate(userDay, userMonth, userYear);
-  let today: string = reformatDate(currDay, currMonth, currYear);
+  let bday: string = _reformatDate(userDay, userMonth, userYear);
+  let today: string = _reformatDate(currDay, currMonth, currYear);
 
   // Format string to Date
   let startDate: Date = new Date(bday);
@@ -48,7 +48,7 @@ function _isLeapYear(year: number): boolean {
 }
 
 // Converts total number of days to [num_year, num_months, num_days]
-function convertDays(days: number) {
+function _convertDays(days: number) {
   let daysPerMonth: Array<number> = [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
   let years: number = days // 365.25;
   days %= 365.25;
@@ -74,13 +74,15 @@ function convertDays(days: number) {
   return null;
 }
 
-function main(): any {
+// PUBLIC METHOD
+// Returns the date as [YYYY, MM, DD] Array<number>
+export function calculateAge(): any {
   let userDay: number   = parseInt((<HTMLInputElement>document.getElementById("day")).value);
   let userMonth: number = parseInt((<HTMLInputElement>document.getElementById("month")).value);
   let userYear: number  = parseInt((<HTMLInputElement>document.getElementById("year")).value);
 
-  let numDays: number = getDateDifferenceInDays(userDay, userMonth, userYear); 
-  let dateArray: any = convertDays(numDays);
+  let numDays: number = _getDateDifferenceInDays(userDay, userMonth, userYear); 
+  let dateArray: any = _convertDays(numDays);
 
   if (dateArray == null) {
     console.log("Unable to convert total number of days into a date");
@@ -89,6 +91,3 @@ function main(): any {
 
   return dateArray;
 }
-
-// --- MAIN ---
-main();
