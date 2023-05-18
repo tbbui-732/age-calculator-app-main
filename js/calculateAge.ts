@@ -48,7 +48,7 @@ function _isLeapYear(year: number): boolean {
 }
 
 // Converts total number of days to [num_year, num_months, num_days]
-function _convertDays(days: number) {
+function _convertDays(days: number): Array<number> {
   let daysPerMonth: Array<number> = [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
   let years: number = days // 365.25;
   days %= 365.25;
@@ -71,23 +71,18 @@ function _convertDays(days: number) {
     year += 1;
   }
 
-  return null;
+  return [-1, -1, -1];
 }
 
 // PUBLIC METHOD
 // Returns the date as [YYYY, MM, DD] Array<number>
-export function calculateAge(): any {
+export function calculateAge(): Array<number> {
   let userDay: number   = parseInt((<HTMLInputElement>document.getElementById("day")).value);
   let userMonth: number = parseInt((<HTMLInputElement>document.getElementById("month")).value);
   let userYear: number  = parseInt((<HTMLInputElement>document.getElementById("year")).value);
 
   let numDays: number = _getDateDifferenceInDays(userDay, userMonth, userYear); 
   let dateArray: any = _convertDays(numDays);
-
-  if (dateArray == null) {
-    console.log("Unable to convert total number of days into a date");
-    return;
-  }
 
   return dateArray;
 }

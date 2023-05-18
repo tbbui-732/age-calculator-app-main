@@ -6,6 +6,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
     <link rel="stylesheet" href="styles/style.css">
     <title>Frontend Mentor | Age calculator app</title>
+    <script src="js/displayAge.js" type="module"></script>
   </head>
   <body>
     <!-- Age calculator app -->
@@ -30,6 +31,10 @@
       <!-- Lower-most section, displays user's age-->
       <div class="display-age">
         <!-- NOTE: i might do all of this in JS-->
+        <div id="display-year"></div>
+        <div id="display-month"></div>
+        <div id="display-day"></div>
+        <button onclick="displayAge()"></button>
       </div>
 
     </div> 
@@ -39,6 +44,5 @@
       Coded by <a href="#">Thien-Bao Bui</a>.
     </div>
 
-    <script src="js/index.js"></script>
   </body>
 </html>

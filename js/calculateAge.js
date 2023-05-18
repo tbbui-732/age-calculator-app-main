@@ -1,3 +1,6 @@
+"use strict";
+exports.__esModule = true;
+exports.calculateAge = void 0;
 // GLOBAL VALUES
 // Storing current date of program
 var dayInMilliseconds = 1000 * 60 * 60 * 24;
@@ -57,7 +60,7 @@ function _convertDays(days) {
         }
         year += 1;
     }
-    return null;
+    return [-1, -1, -1];
 }
 // PUBLIC METHOD
 // Returns the date as [YYYY, MM, DD] Array<number>
@@ -67,9 +70,6 @@ function calculateAge() {
     var userYear = parseInt(document.getElementById("year").value);
     var numDays = _getDateDifferenceInDays(userDay, userMonth, userYear);
     var dateArray = _convertDays(numDays);
-    if (dateArray == null) {
-        console.log("Unable to convert total number of days into a date");
-        return;
-    }
     return dateArray;
 }
+exports.calculateAge = calculateAge;
