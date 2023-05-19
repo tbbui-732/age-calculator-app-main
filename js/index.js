@@ -72,4 +72,6 @@ function calculateAndDisplayAge() {
   displayYearElement.innerHTML = String(dateArray[0]);
   displayMonthElement.innerHTML = String(dateArray[1]);
   displayDayElement.innerHTML = String(dateArray[2]);
+
+  console.log("Calculated user's age");
 }
