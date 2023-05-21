@@ -12,32 +12,42 @@
     <div class="app">
 
       <!-- Top-most section, requests user input -->
-      <div class="user-input">
+      <div class="user-input" style="text-transform: uppercase">
         <div class="day">
           <label for="day">Day</label><br>
-          <input type="text" id="day" name="day">
+          <input type="text" id="day" name="day" placeholder="DD">
         </div>
         <div class="month">
           <label for="month">Month</label><br>
-          <input type="text" id="month" name="month">
+          <input type="text" id="month" name="month" placeholder="MM">
         </div>
         <div class="year">
           <label for="year">Year</label><br>
-          <input type="text" id="year" name="year">
+          <input type="text" id="year" name="year" placeholder="YYYY">
         </div>
       </div>
       
+      <button onclick="calculateAndDisplayAge()">CLICK HERE</button>
+
       <!-- Lower-most section, displays user's age-->
-      <div class="display-age">
-        <div id="display-year"></div>
-        <div id="display-month"></div>
-        <div id="display-day"></div>
-        <button onclick="calculateAndDisplayAge()">CLICK HERE</button>
+      <div class="display-age" style="text-transform: lowercase">
+        <div class="display-year-container">
+          <div id="display-year"><p>--</p></div>
+          <p>YEARS</p>
+        </div>
+        <div class="display-month-container">
+          <div id="display-month"><p>--</p></div>
+          <p>MONTHS</p>
+        </div>
+        <div class="display-day-container">
+          <div id="display-day"><p>--</p></div>
+          <p>DAYS</p>
+        </div>
       </div>
 
     </div> 
 
-    <div class="attribution">
+    <div class="attribution" style="text-align: center">
       Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
       Coded by <a href="#">Thien-Bao Bui</a>.
     </div>
