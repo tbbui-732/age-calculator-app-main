@@ -69,6 +69,7 @@ function calculateAndDisplayAge() {
   let dateArray = getDateArray(userDay, userMonth, userYear);
 
   // Display the user's age
+  // TODO: fix so that the number also changes color as well
   displayYearElement.innerHTML = String(dateArray[0]);
   displayMonthElement.innerHTML = String(dateArray[1]);
   displayDayElement.innerHTML = String(dateArray[2]);
